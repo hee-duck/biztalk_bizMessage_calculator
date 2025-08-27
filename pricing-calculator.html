@@ -25,7 +25,7 @@
     @media (min-width: 720px){ .grid { grid-template-columns: 1.3fr 1fr; } }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
     .card h2 { font-size: 18px; margin: 0 0 8px; }
-    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    label { font-size: 14px; color: var(--fg); margin-right: 12px; }
     select, input[type="number"], input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; }
     .row { display: grid; grid-template-columns: 1fr; gap: 10px; }
     @media (min-width: 520px){ .row { grid-template-columns: 1fr 1fr; } }
@@ -40,6 +40,7 @@
     tbody tr.best { background: #ecfdf5; }
     .pill { display: inline-block; padding: 2px 8px; font-size: 12px; border-radius: 999px; background: #e5edff; color: #1e40af; border: 1px solid #c7d2fe; }
     .footer { margin-top: 10px; font-size: 12px; color: var(--muted); }
+    .checkbox-group { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -48,7 +49,7 @@
       <img alt="Biztalk" src="https://www.biztalk.co.kr/newhome/assets/img/logo/logo.svg" />
       <div class="title">
         <h1>비즈톡 비즈메시지 비용 계산기</h1>
-        <p class="desc">요금제와 발송 건수를 입력하면 맞춤 요금제를 추천해드립니다.</p>
+        <p class="desc">요금제와 발송 건수, 서비스 사용 여부를 입력하면 맞춤 요금제를 추천해드립니다.</p>
       </div>
     </div>
 
@@ -76,6 +77,10 @@
             <input type="text" value="별도(미포함)" disabled />
           </div>
         </div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="useChatbot"> 챗봇 사용</label>
+          <label><input type="checkbox" id="useBizting"> 비즈팅 광고 메시지 사용</label>
+        </div>
       </div>
 
       <div class="card">
@@ -100,11 +105,11 @@
     </div>
 
     <div class="card" style="margin-top:12px;">
-      <h2>추천 요금제</h2>
+      <h2>결과</h2>
       <div class="kpi" id="kpi">
         <div class="k"><div class="v" id="k_total">-</div><div class="t">총 비용(부가세 제외)</div></div>
       </div>
-      <div class="footer">가장 저렴한 요금제에는 <span class="pill">BEST</span> 가 표시됩니다.</div>
+      <div class="footer">추천 요금제에는 <span class="pill">BEST</span>가 표시됩니다.</div>
       <div style="overflow-x:auto; margin-top:10px;">
         <table id="cmp">
           <thead>
@@ -142,27 +147,35 @@
     function recompute() {
       const planKey = el("plan").value;
       const volume  = Math.max(0, parseInt(el("volume").value || "0", 10));
+      const useChatbot = el("useChatbot").checked;
+      const useBizting = el("useBizting").checked;
 
       const results = Object.keys(plans).map(k => computeForPlan(k, volume));
-      const minSubtotal = Math.min(...results.map(r => r.subtotal));
       const tbody = document.querySelector("#cmp tbody");
       tbody.innerHTML = "";
+
+      let bestPlan;
+      if (useChatbot || useBizting) {
+        bestPlan = "ultra";
+      } else {
+        bestPlan = results.reduce((min, r) => r.subtotal < min.subtotal ? r : min, results[0]).key;
+      }
+
       results.sort((a,b)=>a.subtotal-b.subtotal).forEach((r) => {
         const tr = document.createElement("tr");
-        if (r.subtotal === minSubtotal) tr.classList.add("best");
+        if (r.key === bestPlan) tr.classList.add("best");
         tr.innerHTML = `
-          <td>${r.name}${r.subtotal===minSubtotal? ' <span class="pill">BEST</span>':''}</td>
+          <td>${r.name}${r.key===bestPlan? ' <span class="pill">BEST</span>':''}</td>
           <td>${fmt(r.subtotal)}원</td>
         `;
         tbody.appendChild(tr);
       });
 
       const sel = results.find(r => r.key === planKey) || results[0];
-      const totalEx = sel.subtotal;
-      el("k_total").textContent = fmt(totalEx) + "원";
+      el("k_total").textContent = fmt(sel.subtotal) + "원";
     }
 
-    ["plan","volume"].forEach(id => {
+    ["plan","volume","useChatbot","useBizting"].forEach(id => {
       el(id).addEventListener("input", recompute);
       el(id).addEventListener("change", recompute);
     });
