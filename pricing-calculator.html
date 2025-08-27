@@ -26,10 +26,10 @@
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
     .card h2 { font-size: 18px; margin: 0 0 8px; }
     label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-    select, input[type="number"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; }
+    select, input[type="number"], input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; }
     .row { display: grid; grid-template-columns: 1fr; gap: 10px; }
     @media (min-width: 520px){ .row { grid-template-columns: 1fr 1fr; } }
-    .kpi { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+    .kpi { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
     .k { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
     .k .v { font-weight: 700; font-size: 18px; margin-bottom: 2px; }
     .k .t { font-size: 12px; color: var(--muted); }
@@ -54,7 +54,7 @@
 
     <div class="grid">
       <div class="card">
-        <h2>맞춤 요금제 계산하기</h2>
+        <h2>요금제 선택 및 발송건수 입력</h2>
         <div class="row">
           <div>
             <label for="plan">요금제 선택</label>
@@ -100,19 +100,17 @@
     </div>
 
     <div class="card" style="margin-top:12px;">
-      <h2>결과</h2>
+      <h2>추천 요금제</h2>
       <div class="kpi" id="kpi">
         <div class="k"><div class="v" id="k_total">-</div><div class="t">총 비용(부가세 제외)</div></div>
-        <div class="k"><div class="v" id="k_effective">-</div><div class="t">건당 단가</div></div>
       </div>
-      <div class="footer">가장 저렴한 요금제에는 <span class="pill">BEST</span>가 표시됩니다.</div>
+      <div class="footer">가장 저렴한 요금제에는 <span class="pill">BEST</span> 가 표시됩니다.</div>
       <div style="overflow-x:auto; margin-top:10px;">
         <table id="cmp">
           <thead>
             <tr>
               <th>요금제</th>
               <th>총 비용</th>
-              <th>건당 단가</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -138,8 +136,7 @@
       const p = plans[planKey];
       const billable = Math.max(0, volume - p.free);
       const subtotal = p.monthly + billable * p.unit; // VAT 제외
-      const eff = volume > 0 ? Math.round(subtotal / volume) : 0; // 정수(1의 자리)
-      return { key: planKey, name: p.name, subtotal, eff, billable };
+      return { key: planKey, name: p.name, subtotal, billable };
     }
 
     function recompute() {
@@ -156,7 +153,6 @@
         tr.innerHTML = `
           <td>${r.name}${r.subtotal===minSubtotal? ' <span class="pill">BEST</span>':''}</td>
           <td>${fmt(r.subtotal)}원</td>
-          <td>${fmt(r.eff)}원</td>
         `;
         tbody.appendChild(tr);
       });
@@ -164,7 +160,6 @@
       const sel = results.find(r => r.key === planKey) || results[0];
       const totalEx = sel.subtotal;
       el("k_total").textContent = fmt(totalEx) + "원";
-      el("k_effective").textContent = fmt(sel.eff) + "원";
     }
 
     ["plan","volume"].forEach(id => {
