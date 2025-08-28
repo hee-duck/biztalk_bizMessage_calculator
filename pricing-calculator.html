@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>비즈톡 비즈메시지 맞춤 요금제 계산기</title>
+  <title>비즈톡 비즈메시지 요금제 계산기</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -11,12 +11,15 @@
       --muted: #6b7280;
       --border: #e5e7eb;
       --card: #f9fafb;
-      --hint: #374151;
       --accent-bg: #ecfdf5;
       --accent-fg: #064e3b;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+                   system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
     .wrap { max-width: 920px; margin: 24px auto; padding: 0 16px 40px; }
     .header { display: flex; align-items: center; gap: 12px; }
     .header img { height: 28px; width: auto; }
@@ -24,20 +27,36 @@
     .title h1 { font-size: 22px; margin: 0; }
     .title .desc { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
+    /* 좌측/우측 카드 로우 정렬(2열) */
     .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
     @media (min-width: 720px){ .grid { grid-template-columns: 1.3fr 1fr; } }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-    .card h2 { font-size: 18px; margin: 0 0 8px; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px;
+      display: flex; flex-direction: column; gap: 12px; /* 카드 내부도 로우 정렬 */
+    }
+    .card h2 { font-size: 18px; margin: 0; }
 
     label { font-size: 13px; color: var(--muted); margin-bottom: 6px; display: inline-block; }
-    select, input[type="number"], input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; background: #fff; color: var(--fg); }
+    select, input[type="number"], input[type="text"] {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+      border-radius: 10px; font-size: 15px; background: #fff; color: var(--fg);
+    }
 
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .row-col { display: flex; flex-direction: column; }
+    /* 한 줄에 2개(볼륨/부가세) */
     .row-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    @media (max-width: 520px){ .row, .row-inline { grid-template-columns: 1fr; } }
+    .row-col { display: flex; flex-direction: column; }
+    @media (max-width: 520px){ .row-inline { grid-template-columns: 1fr; } }
 
-    .kpi { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
+    .checkbox-group { display: flex; gap: 16px; flex-wrap: wrap; }
+    .checkbox-group label { color: var(--fg); font-size: 14px; margin: 0; }
+
+    .help { margin-top: -4px; padding: 10px 12px; border: 1px solid var(--border);
+            border-radius: 10px; background: #fff; display: none; }
+    .help strong { color: var(--accent-fg); }
+
+    .kpi { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .k { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
     .k .v { font-weight: 700; font-size: 18px; margin-bottom: 2px; }
     .k .t { font-size: 12px; color: var(--muted); }
@@ -50,10 +69,6 @@
     .pill { display: inline-block; padding: 2px 8px; font-size: 12px; border-radius: 999px; background: #e5edff; color: #1e40af; border: 1px solid #c7d2fe; }
 
     .footer { margin-top: 10px; font-size: 12px; color: var(--muted); }
-    .help { margin-top: 8px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff; display: none; }
-    .help strong { color: var(--hint); }
-    .checkbox-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
-    .checkbox-group label { color: var(--fg); font-size: 14px; margin: 0; }
   </style>
 </head>
 <body>
@@ -61,36 +76,35 @@
     <div class="header">
       <img alt="Biztalk" src="https://www.biztalk.co.kr/newhome/assets/img/logo/logo.svg" />
       <div class="title">
-        <h1>비즈톡 비즈메시지 맞춤 요금제 계산기</h1>
-        <p class="desc">월 알림톡 예상 발송 건수를 입력하면 맞춤 요금제를 추천해드립니다.</p>
+        <h1>>비즈톡 비즈메시지 요금제 계산기</h1>
+        <p class="desc">알림톡 예상 발송 건수를 입력하면 맞춤 요금제를 추천해드립니다.</p>
       </div>
     </div>
 
     <div class="grid">
-      <!-- 입력 카드 -->
+      <!-- 입력 카드 (요금제 선택 UI 없음 / 카드 내부 로우 정렬) -->
       <div class="card">
-        <h2>월 알림톡 예상 발송 건수 입력</h2>
-        
-          <!-- 볼륨(좌) + 부가세(우) 한 줄 구성 -->
-          <div class="row-inline">
-            <div class="row-col">
-              <label for="volume">예상 발송 건수 (월)</label>
-              <input id="volume" type="number" min="0" step="1" value="10000" />
-            </div>
-            <div class="row-col">
-              <label>부가세(10%)</label>
-              <input type="text" value="별도(미포함)" disabled />
-            </div>
+        <h2>알림톡 예상 발송 건수</h2>
+
+        <!-- 발송건수(좌) + 부가세(우) 한 줄 -->
+        <div class="row-inline">
+          <div class="row-col">
+            <label for="volume">예상 발송 건수 (월)</label>
+            <input id="volume" type="number" min="0" step="1" value="10000" />
+          </div>
+          <div class="row-col">
+            <label>부가세(10%)</label>
+            <input type="text" value="별도(미포함)" disabled />
           </div>
         </div>
 
-        <!-- 체크박스 -->
+        <!-- 체크박스(.card 내부) -->
         <div class="checkbox-group">
           <label><input type="checkbox" id="useChatbot"> 챗봇 사용</label>
           <label><input type="checkbox" id="useBizting"> 비즈팅 광고 메시지 사용</label>
         </div>
 
-        <!-- 도움말(체크 시 표시, 해제 시 숨김) -->
+        <!-- 도움말(체크 시 표시) -->
         <div id="helperChatbot" class="help">
           <strong>챗봇</strong><br />
           챗봇은 운영하는 카카오톡 채널에서 고객이 문의를 셀프 처리할 수 있도록 돕는 서비스입니다.
@@ -102,7 +116,7 @@
         </div>
       </div>
 
-      <!-- 요금제 정책 -->
+      <!-- 요금제 정책 카드 -->
       <div class="card">
         <h2>요금제</h2>
         <table>
@@ -110,7 +124,7 @@
             <tr>
               <th>요금제</th>
               <th>월 기본료</th>
-              <th>알림톡 무료건수</th>
+              <th>무료건수</th>
               <th>건당 단가</th>
             </tr>
           </thead>
@@ -124,14 +138,14 @@
       </div>
     </div>
 
-    <!-- 결과 -->
+    <!-- 결과 카드 -->
     <div class="card" style="margin-top:12px;">
-      <h2>결과</h2>
+      <h2>추천 요금제</h2>
       <div class="kpi" id="kpi">
-        <div class="k"><div class="v" id="k_total">-</div><div class="t">총 비용(부가세 별도)</div></div>
+        <div class="k"><div class="v" id="k_total">-</div><div class="t">추천 요금제 총 비용(부가세 별도)</div></div>
       </div>
       <div class="footer">추천 요금제에는 <span class="pill">BEST</span>가 표시됩니다.</div>
-      <div style="overflow-x:auto; margin-top:10px;">
+      <div style="overflow-x:auto;">
         <table id="cmp">
           <thead>
             <tr>
@@ -171,40 +185,40 @@
       const useChatbot = el("useChatbot").checked;
       const useBizting = el("useBizting").checked;
 
-      // 도움말 토글
+      // 도움말 토글 (.card 내부)
       el("helperChatbot").style.display = useChatbot ? "block" : "none";
       el("helperBizting").style.display = useBizting ? "block" : "none";
 
+      // 요금제별 계산
       const results = Object.keys(plans).map(k => computeForPlan(k, volume));
 
       // 추천 로직: 챗봇/비즈팅 사용 시 울트라 BEST, 아니면 최소 비용 BEST
-      let bestPlan;
+      let bestPlanKey;
       if (useChatbot || useBizting) {
-        bestPlan = "ultra";
+        bestPlanKey = "ultra";
       } else {
-        bestPlan = results.reduce((min, r) => r.subtotal < min.subtotal ? r : min, results[0]).key;
+        bestPlanKey = results.reduce((min, r) => r.subtotal < min.subtotal ? r : min, results[0]).key;
       }
 
-      // 결과 표 구성
+      // 결과 테이블
       const tbody = document.querySelector("#cmp tbody");
       tbody.innerHTML = "";
       results.sort((a,b)=>a.subtotal-b.subtotal).forEach((r) => {
         const tr = document.createElement("tr");
-        if (r.key === bestPlan) tr.classList.add("best");
+        if (r.key === bestPlanKey) tr.classList.add("best");
         tr.innerHTML = `
-          <td>${r.name}${r.key===bestPlan? ' <span class="pill">BEST</span>':''}</td>
+          <td>${r.name}${r.key===bestPlanKey? ' <span class="pill">BEST</span>':''}</td>
           <td>${fmt(r.subtotal)}원</td>
         `;
         tbody.appendChild(tr);
       });
 
-      // 선택한 요금제 기준 KPI
-      const sel = results.find(r => r.key === planKey) || results[0];
-      el("k_total").textContent = fmt(sel.subtotal) + "원";
+      // KPI는 추천 요금제 기준
+      const best = results.find(r => r.key === bestPlanKey);
+      el("k_total").textContent = best ? (fmt(best.subtotal) + "원") : "-";
     }
 
-    // 이벤트 바인딩
-    ["plan","volume","useChatbot","useBizting"].forEach(id => {
+    ["volume","useChatbot","useBizting"].forEach(id => {
       el(id).addEventListener("input", recompute);
       el(id).addEventListener("change", recompute);
     });
