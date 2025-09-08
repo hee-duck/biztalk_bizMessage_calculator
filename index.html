@@ -1,11 +1,756 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=pricing-calculator.html">
-  <title>Redirecting...</title>
+    <!-- meta -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="톡이지">
+    <meta property="og:site_name" content="톡이지">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
+    <!-- 파비콘 -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+
+    <title>톡이지</title>
+
 </head>
+
 <body>
-  <p>Redirecting to <a href="pricing-calculator.html">calculator</a>…</p>
+    <!-- 헤더 : 시작 -->
+    <section id="header">
+        <div class="container_header">
+            <div class="logo_top">
+                <a href="./index.html">
+                    <img src="./images/logo_top.jpg" class="pc">
+                    <img src="./images/logo_top_mb.jpg" class="mb">
+                </a>
+            </div>
+
+            <!-- pc메뉴 : 시작 -->
+            <div class="menu_top">
+
+                <!-- 로그인시 : 시작 -->
+                <div><a href="#">로그아웃</a></div>
+                <div class="menu_mypage">
+                    <a href="./mypage_account.html" class="on">마이페이지 <img src="./images/arr_menu.png"
+                            class="arr_menu"></a>
+                    <div class="submenu_mypage">
+                        <a href="./mypage_account.html">계정 관리</a>
+                        <a href="./mypage_chatbot.html" class="on">챗봇 관리</a>
+                        <a href="./mypage_payment.html">결제 관리</a>
+                        <a href="./mypage_notice_list.html">공지사항</a>
+                    </div>
+                </div>
+                <!-- 로그인시 : 끝 -->
+
+                <!-- 로그아웃시 
+                <div>
+                    <a href="./login.html">로그인</a>
+                </div>
+                <div>
+                    <a href="./sign_up_1.html">회원가입</a>
+                </div>
+                -->
+
+            </div>
+            <!-- pc메뉴 : 끝 -->
+
+            <!-- 햄버거메뉴 -->
+            <div class="ico_menu">
+                <img src="./images/ico_menu.jpg">
+            </div>
+        </div>
+
+        <!-- 모바일 메뉴 : 시작 -->
+        <div id="gnb_mb">
+
+            <div id="close_gnb">
+                <img src="./images/ico_x.jpg" class="ico_x">
+            </div>
+            <!-- 로그인시 : 시작 -->
+            <a href="#" class="on">마이페이지</a>
+            <div class="submenu_mb">
+                <div class="innershadow"></div>
+                <a href="./mypage_account.html">계정 관리</a>
+                <a href="./mypage_chatbot.html" class="on">챗봇 관리</a>
+                <a href="./mypage_payment.html">결제 관리</a>
+                <a href="./mypage_notice_list.html">공지사항</a>
+            </div>
+            <a href="#">로그아웃</a>
+            <!-- 로그인시 : 끝 -->
+
+            <!-- 로그아웃시 
+            <a href="./login.php">로그인</a>
+            <a href="./login.php">회원가입</a>
+            -->
+
+        </div>
+        <!-- 모바일 메뉴 : 끝 -->
+
+    </section>
+    <!-- 헤더 : 끝 -->
+
+
+    <!-- 마이페이지_챗봇관리 : 시작 -->
+    <section class="container_basic">
+        <h1>마이페이지</h1>
+        <h1 class="mb">챗봇 관리</h1>
+
+        <!--서브메뉴 -->
+        <div class="tabmenu_mypage">
+            <a href="./mypage_account.html">계정 관리</a>
+            <a class="on" href="./mypage_chatbot.html">챗봇 관리</a>
+            <a href="./mypage_payment.html">결제 관리</a>
+            <a href="./mypage_notice_list.html">공지사항</a>
+        </div>
+
+        <div class="breadcrumb">마이페이지 > 챗봇 관리</div>
+
+        <h2>
+            챗봇 관리
+            <input type="button" id="" name="" class="btn_sub btn_sub_blue" value="등록하기">
+        </h2>
+
+        <!-- 연동 서비스 : 시작-->
+        <div class="pl15 pt20">
+            <h3>
+                <span class="mr20">연동 서비스</span>
+                <span class="tag_ch_talk">채널톡</span>
+                <span class="tag_kakao">카카오톡</span>
+            </h3>
+
+            <!-- 채널톡 : 시작 -->
+            <div class="row_form row_chatbot lg-flex">
+                <span class="tag_ch_talk">채널톡</span>
+                <label for="address_ch_talk">주소</label>
+                <div>
+                    <input type="text" name="" id="address_ch_talk" class="">
+                    <span>* 채널톡 > 채널 설정 > 일반 설정 > 채널 프로필 > 연락처 및 위치</span>
+                </div>
+            </div>
+            <div class="row_form row_chatbot lg-flex">
+                <span class="tag_ch_talk">채널톡</span>
+                <label for="domain_ch_talk">도메인</label>
+                <div>
+                    <input type="text" name="" id="domain_ch_talk" class="">
+                    <span>* 챗봇이 노출될 도메인의 url</span>
+                </div>
+            </div>
+            <!-- 채널톡 : 끝 -->
+
+            <!-- 카카오톡 : 시작 -->
+            <div class="row_form row_chatbot lg-flex">
+                <span class="tag_kakao">카카오톡</span>
+                <label for="channel_kakao">채널명</label>
+                <div>
+                    <input type="text" name="" id="channel_kakao" class="">
+                    <span>* 카카오톡 채널 관리자센터 > 채널 > 프로필 > 프로필 설정 </span>
+                </div>
+            </div>
+            <div class="row_form row_chatbot lg-flex">
+                <span class="tag_kakao">카카오톡</span>
+                <label for="searchid_kakao">검색용 아이디</label>
+                <div>
+                    <input type="text" name="" id="searchid_kakao" class="">
+                    <span>* 카카오톡 채널 관리자센터 > 채널 > 프로필 > 프로필 설정 </span>
+                </div>
+            </div>
+            <div class="row_form row_chatbot lg-flex">
+                <span class="tag_kakao">카카오톡</span>
+                <label for="botid_kakao">봇 아이디</label>
+                <div>
+                    <input type="text" name="" id="botid_kakao" class="">
+                    <span>* 카카오톡 챗봇 관리자센터 > 챗봇 > 설정 > 기본 정보 > 봇 ID</span>
+                </div>
+            </div>
+            <!-- 카카오톡 : 끝 -->
+        </div>
+        <!-- 연동 서비스 : 끝-->
+
+        <!-- 봇 상태 : 시작-->
+        <div class="pl15 pt20">
+            <h3>봇 상태</h3>
+
+            <div class="row_form row_chatbot lg-flex">
+                <label for="bot_status">상태</label>
+                <input type="text" name="" id="bot_status" class="">
+            </div>
+            <div class="row_form row_chatbot lg-flex">
+                <label for="bot_reason">사유</label>
+                <input type="text" name="" id="bot_reason" class="">
+            </div>
+        </div>
+
+        <div class="btn_right btn_blue">
+            <input type="button" name="" id="" class="" value="저장">
+        </div>
+
+        <div class="msg_box flex mt30">
+            <img src="./images/ico_attention.png" class="ico_attention">
+            <div>
+                채널 및 챗봇 정보는 연동 신청 이후 수정 불가해요.<br>
+                수정이 필요한 경우 mb@biztalk.co.kr으로 접수해주세요.
+            </div>
+        </div>
+        <!-- 봇 상태 : 끝-->
+
+
+        <!-- =========================
+     공통 템플릿 관리
+     - 좌: 카테고리/샘플 질문 드롭다운
+     - 우: 답변 미리보기(변수 치환 반영) + [템플릿 적용] 버튼(우측 하단)
+========================= -->
+        <h2 class="mt70">공통 템플릿 관리</h2>
+
+        <div class="row_form row_chatbot lg-flex">
+            <label for="tpl_category">문의 카테고리</label>
+            <div>
+                <select id="tpl_category" class="select" style="min-width:160px">
+                    <option value="delivery">배송</option>
+                    <option value="refund">환불</option>
+                    <option value="exchange">교환</option>
+                    <option value="payment">결제</option>
+                </select>
+                <span class="ml15" style="font-size:13px;color:#777">* 고객센터 상위 문의 기반 공통 템플릿</span>
+            </div>
+        </div>
+
+        <!-- 가로 정렬: 좌(질문 선택) · 우(미리보기+적용 버튼) -->
+        <div class="row_form row_chatbot" style="display:flex; gap:20px; align-items:flex-start;">
+            <!-- 좌: 샘플 질문 -->
+            <div style="flex:1; min-width:320px;">
+                <label for="tpl_question" style="display:block; margin-bottom:8px;">샘플 질문</label>
+                <select id="tpl_question" class="select" style="width:100%; min-width:300px"></select>
+            </div>
+
+            <!-- 우: 답변 미리보기 카드(+템플릿 적용 버튼) -->
+            <div style="flex:2; min-width:420px;">
+                <label style="display:block; margin-bottom:8px;">답변 미리보기</label>
+                <div id="tpl_preview_card" class="msg_box" style="position:relative; padding-bottom:52px;">
+                    <div id="tpl_answer_preview" style="white-space:pre-wrap; min-height:120px;"></div>
+                    <div style="position:absolute; bottom:12px; right:12px;">
+                        <input type="button" class="btn_sub btn_sub_blue" id="btn_tpl_apply_to_list" value="템플릿 적용">
+                    </div>
+                </div>
+                <div class="mt10" style="font-size:13px;color:#777">
+                    * 변수 표기법: <code>#{배송비}</code>, <code>#{환불소요일}</code>, <code>#{배송기간}</code> …
+                </div>
+            </div>
+        </div>
+
+        <div class="msg_box mt15" style="font-size:13px;">
+            <b>TIP</b> 템플릿을 고르면 미리보기에 <u>사전에 지정된 변수값</u>이 자동 적용되어 표시됩니다. 하단의 “FAQ 변수 관리”에서 값을 바꾸면 미리보기가 즉시 반영됩니다.
+        </div>
+
+        <!-- =========================
+     FAQ 리스트 (수정/삭제 지원)
+========================= -->
+        <h3 class="mt30">FAQ 리스트</h3>
+        <table class="table_a" cellpadding="0" cellspacing="0"
+            style="width:100%; border-collapse:collapse; margin-top:10px;">
+            <thead>
+                <tr style="background:#f7f7f7; text-align:left;">
+                    <th style="padding:10px; border:1px solid #ddd;">카테고리</th>
+                    <th style="padding:10px; border:1px solid #ddd;">질문</th>
+                    <th style="padding:10px; border:1px solid #ddd;">답변(템플릿)</th>
+                    <th style="padding:10px; border:1px solid #ddd;">모드</th>
+                    <th style="padding:10px; border:1px solid #ddd;">관리</th>
+                </tr>
+            </thead>
+            <tbody id="faq_list_body"></tbody>
+        </table>
+
+        <script>
+            /* ============================================================
+               0) 변수/템플릿/상태 저장소
+               - VARS: "FAQ 변수 관리" 테이블의 변수명-값을 메모리에 동기화해 사용
+               - FAQ_ITEMS: 리스트에 담길 항목들 {id, category, q, aTemplate, vars[], mode}
+               - TEMPLATE_LIBRARY: 카테고리 공통 템플릿(샘플 질문/답변)
+            ============================================================ */
+            const VARS = new Map([
+                ["배송비", "3,000원"],
+                ["무료배송기준", "70,000원"],
+                ["배송기간", "2~3일"],
+                ["도서산간추가배송비", "3,000원"],
+                ["환불소요일", "3~5일"],
+                ["교환반품기한", "7일"],
+                ["반품배송비", "6,000원"],
+                ["교환배송비", "6,000원"]
+            ]);
+
+            let FAQ_ITEMS = [];
+
+            const TEMPLATE_LIBRARY = {
+                delivery: [
+                    {
+                        q: '배송은 얼마나 걸리나요?',
+                        a: '주문일로부터 영업일 기준 #{배송기간} 내 출고됩니다.',
+                        mode: 'rule'
+                    },
+                    {
+                        q: '배송비는 얼마인가요?',
+                        a: '기본 배송비는 #{배송비}이며, #{무료배송기준} 이상 구매 시 무료배송됩니다.',
+                        mode: 'rule'
+                    },
+                    {
+                        q: '도서/산간 추가 배송비가 있나요?',
+                        a: '도서/산간 지역은 추가 배송비 #{도서산간추가배송비}가 부과될 수 있습니다.',
+                        mode: 'rule'
+                    },
+                    {
+                        q: '배송 조회는 어디서 하나요?',
+                        a: '로그인 후 마이페이지 > 주문조회에서 확인 가능합니다. 비회원은 주문번호로 조회해 주세요.',
+                        mode: 'ai'
+                    }
+                ],
+                refund: [
+                    {
+                        q: '환불은 얼마나 걸리나요?',
+                        a: '상품 도착 및 검수 완료 후 #{환불소요일} 이내 결제수단별로 환불 처리됩니다.',
+                        mode: 'rule'
+                    },
+                    {
+                        q: '교환/반품 가능한 기간은?',
+                        a: '상품 수령 후 #{교환반품기한} 이내 신청 가능합니다. 단, 착용/세탁/훼손 시 불가합니다.',
+                        mode: 'rule'
+                    },
+                    {
+                        q: '반품 배송비는 얼마인가요?',
+                        a: '고객 변심 반품의 경우 왕복 배송비 #{반품배송비}를 부담하셔야 합니다.',
+                        mode: 'rule'
+                    }
+                ],
+                exchange: [
+                    {
+                        q: '사이즈 교환은 가능한가요?',
+                        a: '재고가 있는 경우 사이즈 교환이 가능합니다. 왕복 배송비 #{교환배송비}가 발생할 수 있습니다.',
+                        mode: 'rule'
+                    }
+                ],
+                payment: [
+                    {
+                        q: '어떤 결제수단이 가능한가요?',
+                        a: '카드결제, 실시간 계좌이체, 가상계좌(무통장) 등을 지원합니다.',
+                        mode: 'ai'
+                    },
+                    {
+                        q: '현금영수증 발급이 가능한가요?',
+                        a: '무통장입금/가상계좌 결제 시 현금영수증 발급이 가능합니다.',
+                        mode: 'ai'
+                    }
+                ]
+            };
+
+            /* ============================================================
+               1) 유틸: 변수 토큰 치환 & 변수명 추출 & HTML 이스케이프
+            ============================================================ */
+            const VAR_TOKEN = /#\{(.+?)\}/g;
+
+            function renderAnswer(template) {
+                // 미리보기 직전, 최신 변수 테이블 동기화
+                syncVarsFromTable();
+                if (!template) return '';
+                return template.replace(VAR_TOKEN, (m, name) => (
+                    VARS.has(name) ? VARS.get(name) : `#{${name}}` // 미설정 변수는 토큰 그대로
+                ));
+            }
+            function extractVarNames(template) {
+                const s = new Set();
+                (template || '').replace(VAR_TOKEN, (_, n) => s.add(n));
+                return Array.from(s);
+            }
+            function escapeHtml(s = '') {
+                return s.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+            }
+
+            /* ============================================================
+               2) 공통 템플릿 UI: 드롭다운/미리보기/적용
+            ============================================================ */
+            const $tplCategory = document.getElementById('tpl_category');
+            const $tplQuestion = document.getElementById('tpl_question');
+            const $tplAnswerPrev = document.getElementById('tpl_answer_preview');
+            const $btnApplyToList = document.getElementById('btn_tpl_apply_to_list');
+            const $faqListBody = document.getElementById('faq_list_body');
+
+            function currentTplItem() {
+                const cat = $tplCategory.value;
+                const idx = Number($tplQuestion.value || 0);
+                return (TEMPLATE_LIBRARY[cat] || [])[idx];
+            }
+            function refreshTplQuestions() {
+                const cat = $tplCategory.value;
+                const items = TEMPLATE_LIBRARY[cat] || [];
+                $tplQuestion.innerHTML = '';
+                items.forEach((it, i) => {
+                    const op = document.createElement('option');
+                    op.value = String(i);
+                    op.textContent = `${it.q} ·(${it.mode === 'rule' ? 'FAQ' : 'AI'})`;
+                    $tplQuestion.appendChild(op);
+                });
+                updatePreview();
+            }
+            function updatePreview() {
+                const item = currentTplItem();
+                $tplAnswerPrev.textContent = item ? renderAnswer(item.a) : '';
+            }
+
+            // 템플릿 적용 → FAQ 리스트 즉시 추가
+            $btnApplyToList.addEventListener('click', () => {
+                const item = currentTplItem();
+                if (!item) return;
+                const id = Date.now().toString();
+                const cat = $tplCategory.value;
+                const q = item.q;
+                const aTemp = item.a; // 토큰 포함 원문 저장
+                const vars = extractVarNames(aTemp);
+                const mode = item.mode;
+
+                FAQ_ITEMS.push({ id, category: cat, q, aTemplate: aTemp, vars, mode });
+                renderFAQTable();
+                alert('FAQ 리스트에 추가되었습니다.');
+            });
+
+            $tplCategory.addEventListener('change', refreshTplQuestions);
+            $tplQuestion.addEventListener('change', updatePreview);
+            refreshTplQuestions(); // 초기 로드
+
+            /* ============================================================
+               3) FAQ 리스트 렌더 & 수정/삭제/미리보기
+            ============================================================ */
+            function renderFAQTable() {
+                $faqListBody.innerHTML = '';
+                FAQ_ITEMS.forEach((it) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+      <td style="padding:10px; border:1px solid #ddd;">${labelCategory(it.category)}</td>
+      <td style="padding:10px; border:1px solid #ddd; text-align:left">${escapeHtml(it.q)}</td>
+      <td style="padding:10px; border:1px solid #ddd; text-align:left">${escapeHtml(it.aTemplate)}</td>
+      <td style="padding:10px; border:1px solid #ddd;">${it.mode === 'rule' ? 'FAQ' : 'AI'}</td>
+      <td style="padding:10px; border:1px solid #ddd;">
+        <button class="btn_sub faq_edit" data-id="${it.id}" style="margin-right:4px;">수정</button>
+        <button class="btn_sub faq_delete" data-id="${it.id}">삭제</button>
+      </td>`;
+                    $faqListBody.appendChild(tr);
+                });
+            }
+            function labelCategory(v) {
+                switch (v) {
+                    case 'delivery': return '배송';
+                    case 'refund': return '환불';
+                    case 'exchange': return '교환';
+                    case 'payment': return '결제';
+                    default: return v;
+                }
+            }
+
+            $faqListBody.addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                const id = btn.getAttribute('data-id');
+                const i = FAQ_ITEMS.findIndex(x => x.id === id);
+                if (i < 0) return;
+
+                const item = FAQ_ITEMS[i];
+
+                if (btn.classList.contains('faq_delete')) {
+                    FAQ_ITEMS.splice(i, 1);
+                    renderFAQTable();
+                }
+                else if (btn.classList.contains('faq_preview')) {
+                    const rendered = renderAnswer(item.aTemplate);
+                    alert(`미리보기\n\n[${labelCategory(item.category)}]\nQ) ${item.q}\nA) ${rendered}`);
+                }
+                else if (btn.classList.contains('faq_edit')) {
+                    // 간단 편집: prompt로 질문/답변 템플릿 수정
+                    const newQ = prompt('질문을 수정하세요:', item.q);
+                    if (newQ === null) return;
+                    const newA = prompt('답변 템플릿을 수정하세요(변수는 #{변수명}):', item.aTemplate);
+                    if (newA === null) return;
+
+                    FAQ_ITEMS[i].q = newQ.trim();
+                    FAQ_ITEMS[i].aTemplate = (newA || '').trim();
+                    FAQ_ITEMS[i].vars = extractVarNames(FAQ_ITEMS[i].aTemplate);
+                    renderFAQTable();
+                }
+            });
+
+            /* ============================================================
+               4) 변수 테이블 동기화
+               - 하단 "FAQ 변수 관리" 테이블의 값들을 VARS에 반영
+               - 값 변경 후 미리보기 자동 갱신
+            ============================================================ */
+            function syncVarsFromTable() {
+                // "FAQ 변수 관리" h3 아래 첫 번째 table을 찾는 방식(페이지 구조 가정)
+                const h3s = Array.from(document.querySelectorAll('h3'));
+                const idx = h3s.findIndex(h => (h.textContent || '').includes('FAQ 변수 관리'));
+                if (idx === -1) return;
+                const tbl = h3s[idx].nextElementSibling;
+                const tbody = tbl && tbl.querySelector('tbody');
+                if (!tbody) return;
+
+                Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
+                    const nameCell = tr.children[0];
+                    const valCell = tr.children[1];
+                    const varName = (nameCell?.textContent || '').trim();
+                    const input = valCell?.querySelector('input[type="text"]');
+                    if (varName && input) {
+                        const val = input.value.trim();
+                        if (val) VARS.set(varName, val);
+                    }
+                });
+            }
+
+            // 변수 저장 버튼들이 있다면, 저장 시 미리보기 즉시 반영
+            document.addEventListener('click', (e) => {
+                if (e.target.classList?.contains('btn_save_var')) {
+                    syncVarsFromTable();
+                    updatePreview();
+                }
+            });
+        </script>
+
+
+
+        <h3 class="mt30">FAQ 변수 관리</h3>
+        <table class="table_a" cellpadding="0" cellspacing="0"
+            style="width:100%; border-collapse:collapse; margin-top:10px;">
+            <thead>
+                <tr style="background:#f7f7f7; text-align:left;">
+                    <th style="padding:10px; border:1px solid #ddd;">변수명</th>
+                    <th style="padding:10px; border:1px solid #ddd;">값</th>
+                    <th style="padding:10px; border:1px solid #ddd;">관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">배송비</td>
+                    <td style="padding:10px; border:1px solid #ddd;">
+                        <input type="text" value="3000원"
+                            style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;">
+                    </td>
+                    <td style="padding:10px; border:1px solid #ddd;">
+                        <button class="btn_sub" style="margin-right:4px;">저장</button>
+                        <button class="btn_sub">삭제</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">배송기간</td>
+                    <td style="padding:10px; border:1px solid #ddd;">
+                        <input type="text" value="2~3일"
+                            style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;">
+                    </td>
+                    <td style="padding:10px; border:1px solid #ddd;">
+                        <button class="btn_sub" style="margin-right:4px;">저장</button>
+                        <button class="btn_sub">삭제</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="btn_right btn_blue" style="margin-top:15px;">
+            <input type="button" class="btn_sub btn_sub_blue" value="변수 추가"
+                style="padding:8px 16px; border:none; border-radius:4px; cursor:pointer;">
+        </div>
+
+
+        <!-- <h2 class="mt70">공통 FAQ 관리</h2>
+
+        <div class="row_form row_chatbot lg-flex">
+            <label for="faq_category">카테고리</label>
+            <div>
+                <select id="faq_category" class="" style="padding:8px; border:1px solid #ccc; border-radius:4px;">
+                    <option value="delivery">배송</option>
+                    <option value="refund">환불</option>
+                    <option value="exchange">교환</option>
+                    <option value="payment">결제</option>
+                </select>
+                <span style="margin-left:8px; font-size:13px; color:#666;">* 자주 쓰이는 핵심 CS 정책 카테고리를 선택하세요.</span>
+            </div>
+        </div>
+
+        <div class="row_form row_chatbot lg-flex">
+            <label for="faq_question">질문</label>
+            <div>
+                <input type="text" id="faq_question" class=""
+                    style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"
+                    placeholder="예: 배송은 얼마나 걸리나요?">
+            </div>
+        </div> -->
+
+        <!-- <div class="row_form row_chatbot lg-flex">
+            <label for="faq_answer">답변</label>
+            <div>
+                <textarea id="faq_answer" rows="3"
+                    style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"
+                    placeholder="예: 주문일로부터 2~3일 내 출고됩니다."></textarea>
+            </div>
+        </div>
+
+        <div class="row_form row_chatbot lg-flex">
+            <label for="faq_variable">변수값</label>
+            <div>
+                <input type="text" id="faq_variable" class=""
+                    style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"
+                    placeholder="예: 배송비 3,000원 / 환불 소요 3~5일">
+                <span style="margin-left:8px; font-size:13px; color:#666;">* 카테고리별로 고객사 정책 값만 입력하면 됩니다.</span>
+            </div>
+        </div>
+
+        <div class="btn_right btn_blue" style="margin-top:15px;">
+            <input type="button" class="btn_sub btn_sub_blue" value="FAQ 추가"
+                style="padding:8px 16px; border:none; border-radius:4px; cursor:pointer;">
+        </div> -->
+
+        <!-- <h3 class="mt30">FAQ 리스트</h3>
+        <table class="table_a" cellpadding="0" cellspacing="0"
+            style="width:100%; border-collapse:collapse; margin-top:10px;">
+            <thead>
+                <tr style="background:#f7f7f7; text-align:left;">
+                    <th style="padding:10px; border:1px solid #ddd;">카테고리</th>
+                    <th style="padding:10px; border:1px solid #ddd;">질문</th>
+                    <th style="padding:10px; border:1px solid #ddd;">답변</th>
+                    <th style="padding:10px; border:1px solid #ddd;">변수</th>
+                    <th style="padding:10px; border:1px solid #ddd;">관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">배송</td>
+                    <td style="padding:10px; border:1px solid #ddd;">배송은 얼마나 걸리나요?</td>
+                    <td style="padding:10px; border:1px solid #ddd;">주문일로부터 2~3일 내 출고됩니다.</td>
+                    <td style="padding:10px; border:1px solid #ddd;">배송비: 3,000원</td>
+                    <td style="padding:10px; border:1px solid #ddd;">
+                        <button class="btn_sub" style="margin-right:4px;">수정</button>
+                        <button class="btn_sub">삭제</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+
+
+        <h2 class="mt70">시나리오 관리</h2>
+
+        <div class="row_form row_chatbot lg-flex">
+            <label for="scenario_url">URL</label>
+            <div>
+                <input type="text" name="" id="scenario_url" class="">
+                <input type="button" id="" name="" class="btn_sub" value="저장">
+                <span>* AI학습을 위해 도메인의 URL을 입력해주세요.</span>
+            </div>
+        </div>
+        <div class="row_form row_chatbot lg-flex">
+            <label for="scenario_attach">첨부파일</label>
+            <div>
+                <input type="file" name="" id="scenario_attach" class="" accept="">
+                <input type="button" id="" name="" class="btn_sub" value="저장">
+                <span>
+                    * AI학습을 위해 정책서, CS 데이터 등의 파일을 첨부해주세요.<br>
+                    * 파일 형식: excel, word, pdf
+                </span>
+            </div>
+        </div>
+
+
+        <h3>히스토리</h3>
+        <table class="table_a" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>등록 일시</th>
+                    <th>유형</th>
+                    <th>URL</th>
+                    <th>파일명</th>
+                    <th>반영 상태</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{YYYY-MM-DD}</td>
+                    <td>URL</td>
+                    <td>{https://naver.com}</td>
+                    <td>-</td>
+                    <td>학습 전</td>
+                </tr>
+                <tr>
+                    <td>{YYYY-MM-DD}</td>
+                    <td>첨부파일</td>
+                    <td>-</td>
+                    <td>24년 CS 정책.xls</td>
+                    <td>학습 전</td>
+                </tr>
+                <tr>
+                    <td>{YYYY-MM-DD}</td>
+                    <td>URL</td>
+                    <td>{https://naver.com}</td>
+                    <td>-</td>
+                    <td>학습 전</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    <!-- 마이페이지_챗봇관리 : 끝 -->
+
+
+    <!-- 푸터 : 시작 -->
+    <section id="footer">
+        <div class="container_footer">
+            <div class="logo_footer">
+                <a href="./index.html"><img src="./images/logo_footer.png"></a>
+            </div>
+            <div>
+                <div class="menu_bottom">
+                    <a href="#">회사소개 <img src="./images/ico_newwin.png" class="ico_newwin"></a>
+                    <a href="./use_term.html">이용약관 <img src="./images/ico_newwin.png" class="ico_newwin"></a>
+                    <a href="./privacy_term.html">개인정보처리방침 <img src="./images/ico_newwin.png" class="ico_newwin"></a>
+                </div>
+                <div class="footer_info">(주)비즈톡 서울특별시 강남구 봉은사로 304 금강빌딩 14층 ㅣ 대표번호 1688-3764 ㅣ FAX 02-552-0930 ㅣ Email
+                    mb@biztalk.co.kr</div>
+                <div class="footer_info">대표자 정의영 ㅣ 개인정보관리책임자 정의영 ㅣ 사업자등록번호 260-88-00124 ㅣ</div>
+                <div class="copyright">Copyright © BIZTALK Co. Ltd. All rights reserved</div>
+            </div>
+        </div>
+
+    </section>
+    <!-- 푸터 : 끝 -->
+
+    <!-- 자바스크립트 -->
+    <script type="text/javascript">
+
+        /* 모바일 메뉴 열기 */
+        document.querySelector(".ico_menu").addEventListener("click", (e) => {
+            document.querySelector("#gnb_mb").style.display = "block";
+        });
+
+        /* 모바일 메뉴 닫기 */
+        document.querySelector("#close_gnb").addEventListener("click", (e) => {
+            document.querySelector("#gnb_mb").style.display = "none";
+        });
+
+    </script>
 </body>
-</html>
